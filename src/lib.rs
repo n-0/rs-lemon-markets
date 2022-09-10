@@ -8,4 +8,5 @@ extern crate reqwest;
 
 pub mod market_data;
 pub mod trading;
+pub mod live_streaming;
 pub mod util;

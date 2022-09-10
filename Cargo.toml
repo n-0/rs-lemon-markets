@@ -7,10 +7,23 @@ edition = "2021"
 [dependencies]
 serde = "^1.0"
 serde_derive = "^1.0"
+ably = "0.1.0"
+tokio = { version = "1", features = ["full"] }
 serde_json = "^1.0"
 url = "^2.2"
+futures = "0.3.24"
 [dependencies.reqwest]
 version = "^0.11"
 features = ["json", "multipart"]
 
 [dev-dependencies]
+
+
+[env]
+KEY_PAPER_TRADING = ""
+KEY_LIVE_TRADING = "" 
+KEY_MARKET_DATA = "" 
+URL_PAPER_TRADING = "https://paper-trading.lemon.markets/v1/"
+URL_LIVE_TRADING = "https://trading.lemon.markets/v1/" 
+URL_MARKET_DATA = "https://data.lemon.markets/v1/" 
+URL_LIVE_STREAMING = "https://realtime.lemon.markets/v1/"

@@ -4,14 +4,6 @@ pub mod api__endpoints__quotes__page_dict;
 pub use self::api__endpoints__quotes__page_dict::ApiEndpointsQuotesPageDict;
 pub mod api__endpoints__trades__page_dict;
 pub use self::api__endpoints__trades__page_dict::ApiEndpointsTradesPageDict;
-/*
-pub mod from;
-pub use self::from::FromDate;
-pub mod from_any_of;
-pub use self::from_any_of::FromDateAnyOf;
-pub mod t;
-pub use self::t::T;
-*/
 pub mod instrument;
 pub use self::instrument::Instrument;
 pub mod model_type;
