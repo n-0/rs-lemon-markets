@@ -1,0 +1,16 @@
+[package]
+name = "rs_lemon_markets"
+version = "0.0.1"
+authors = ["OpenAPI Generator team and contributors", "n-0@github.com"]
+edition = "2021"
+
+[dependencies]
+serde = "^1.0"
+serde_derive = "^1.0"
+serde_json = "^1.0"
+url = "^2.2"
+[dependencies.reqwest]
+version = "^0.11"
+features = ["json", "multipart"]
+
+[dev-dependencies]
