@@ -26,15 +26,15 @@ pub struct ReadOrderResponse {
     #[serde(rename = "side")]
     pub side: String,
     #[serde(rename = "quantity")]
-    pub quantity: i32,
+    pub quantity: u64,
     #[serde(rename = "stop_price", skip_serializing_if = "Option::is_none")]
-    pub stop_price: Option<i32>,
+    pub stop_price: Option<f64>,
     #[serde(rename = "limit_price", skip_serializing_if = "Option::is_none")]
-    pub limit_price: Option<i32>,
+    pub limit_price: Option<f64>,
     #[serde(rename = "estimated_price", skip_serializing_if = "Option::is_none")]
-    pub estimated_price: Option<i32>,
+    pub estimated_price: Option<f64>,
     #[serde(rename = "estimated_price_total", skip_serializing_if = "Option::is_none")]
-    pub estimated_price_total: Option<i32>,
+    pub estimated_price_total: Option<f64>,
     #[serde(rename = "venue")]
     pub venue: String,
     #[serde(rename = "status")]
@@ -42,11 +42,11 @@ pub struct ReadOrderResponse {
     #[serde(rename = "type")]
     pub _type: String,
     #[serde(rename = "executed_quantity")]
-    pub executed_quantity: i32,
+    pub executed_quantity: u64,
     #[serde(rename = "executed_price")]
-    pub executed_price: i32,
+    pub executed_price: f64,
     #[serde(rename = "executed_price_total", skip_serializing_if = "Option::is_none")]
-    pub executed_price_total: Option<i32>,
+    pub executed_price_total: Option<f64>,
     #[serde(rename = "activated_at", skip_serializing_if = "Option::is_none")]
     pub activated_at: Option<String>,
     #[serde(rename = "executed_at", skip_serializing_if = "Option::is_none")]
@@ -58,7 +58,7 @@ pub struct ReadOrderResponse {
     #[serde(rename = "notes", skip_serializing_if = "Option::is_none")]
     pub notes: Option<String>,
     #[serde(rename = "charge", skip_serializing_if = "Option::is_none")]
-    pub charge: Option<i32>,
+    pub charge: Option<f64>,
     #[serde(rename = "chargeable_at", skip_serializing_if = "Option::is_none")]
     pub chargeable_at: Option<String>,
     #[serde(rename = "key_creation_id", skip_serializing_if = "Option::is_none")]
@@ -72,7 +72,7 @@ pub struct ReadOrderResponse {
 }
 
 impl ReadOrderResponse {
-    pub fn new(id: String, isin: String, expires_at: String, created_at: String, side: String, quantity: i32, venue: String, status: String, _type: String, executed_quantity: i32, executed_price: i32) -> ReadOrderResponse {
+    pub fn new(id: String, isin: String, expires_at: String, created_at: String, side: String, quantity: u64, venue: String, status: String, _type: String, executed_quantity: u64, executed_price: f64) -> ReadOrderResponse {
         ReadOrderResponse {
             id,
             isin,

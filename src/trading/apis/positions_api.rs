@@ -40,28 +40,37 @@ pub enum PositionsStatementsGetPositionsStatementsGetError {
     UnknownValue(serde_json::Value),
 }
 
+#[derive(Debug, Clone, Default)]
+pub struct GetAllPositionsParams {
+    pub configuration: configuration::Configuration,
+    pub isin: Option<String>,
+    pub limit: Option<i32>,
+    pub page: Option<i32>,
+    pub authorization: Option<String>
+}
 
-pub async fn positions_get_positions_get(configuration: &configuration::Configuration, isin: Option<&str>, limit: Option<i32>, page: Option<i32>, authorization: Option<&str>) -> Result<crate::trading::models::PagePortfolio, Error<PositionsGetPositionsGetError>> {
-    let local_var_configuration = configuration;
+
+pub async fn positions_get_positions_get(params: GetAllPositionsParams) -> Result<crate::trading::models::PagePortfolio, Error<PositionsGetPositionsGetError>> {
+    let local_var_configuration = params.configuration;
 
     let local_var_client = &local_var_configuration.client;
 
     let local_var_uri_str = format!("{}/positions/", local_var_configuration.base_path);
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
 
-    if let Some(ref local_var_str) = isin {
+    if let Some(ref local_var_str) = params.isin {
         local_var_req_builder = local_var_req_builder.query(&[("isin", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_str) = limit {
+    if let Some(ref local_var_str) = params.limit {
         local_var_req_builder = local_var_req_builder.query(&[("limit", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_str) = page {
+    if let Some(ref local_var_str) = params.page {
         local_var_req_builder = local_var_req_builder.query(&[("page", &local_var_str.to_string())]);
     }
     if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
-    if let Some(local_var_param_value) = authorization {
+    if let Some(local_var_param_value) = params.authorization {
         local_var_req_builder = local_var_req_builder.header("Authorization", local_var_param_value.to_string());
     }
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {

@@ -31,7 +31,6 @@ pub async fn create_live_streaming_client() -> Result<LemonMarketLSClient, super
                     let auth_question = auth_res.text().await;
                     match auth_question {
                         Ok(auth_question) => {
-                            println!("{:#?}", auth_question);
                             let auth = serde_json::from_str::<LemonMarketLiveStreamingAuth>(&auth_question);
                             match auth {
                                 Ok(auth) => {

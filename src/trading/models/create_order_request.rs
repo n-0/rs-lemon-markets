@@ -16,15 +16,15 @@ pub struct CreateOrderRequest {
     #[serde(rename = "isin")]
     pub isin: String,
     #[serde(rename = "expires_at", skip_serializing_if = "Option::is_none")]
-    pub expires_at: Option<serde_json::Value>,
+    pub expires_at: Option<String>,
     #[serde(rename = "side")]
     pub side: crate::trading::models::Sides,
     #[serde(rename = "quantity")]
-    pub quantity: i32,
+    pub quantity: u64,
     #[serde(rename = "stop_price", skip_serializing_if = "Option::is_none")]
-    pub stop_price: Option<i32>,
+    pub stop_price: Option<f64>,
     #[serde(rename = "limit_price", skip_serializing_if = "Option::is_none")]
-    pub limit_price: Option<i32>,
+    pub limit_price: Option<f64>,
     #[serde(rename = "venue", skip_serializing_if = "Option::is_none")]
     pub venue: Option<Box<crate::trading::models::Venue>>,
     #[serde(rename = "notes", skip_serializing_if = "Option::is_none")]
@@ -34,7 +34,7 @@ pub struct CreateOrderRequest {
 }
 
 impl CreateOrderRequest {
-    pub fn new(isin: String, side: crate::trading::models::Sides, quantity: i32) -> CreateOrderRequest {
+    pub fn new(isin: String, side: crate::trading::models::Sides, quantity: u64) -> CreateOrderRequest {
         CreateOrderRequest {
             isin,
             expires_at: None,
